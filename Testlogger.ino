@@ -13,11 +13,10 @@
 const int chipSelect = 4;
 RTC_DS1307 RTC;
 
-char LaDate         [22];                 // Variable regroupant la date et l'heure.
+//char LaDate         [22];                 // Variable regroupant la date et l'heure.
 //char nomfichier       [8];                // Permet le stockage du nom du fichier avec horodatage.
 		//  ---   ---       Variables SD        ---   --- //
-	File fichier;
-	//File fichier;                         // Crée un objet fichier.
+	File fichier;                         // Crée un objet fichier.
 	//File racine;                          // Crée un objet racine.
 //////////////////////////////////////////////////////////////////////
 // **************************************************************** //
@@ -73,8 +72,6 @@ void loop()
 
 	delay(1000);			// OHHHHH MAIS C'EST DE LA MERDE CA !!!!
 }
-
-
 //////////////////////////////////////////////////////////////////////
 // **************************************************************** //
 // ************************* Programme SD ************************* //
@@ -82,17 +79,9 @@ void loop()
 //////////////////////////////////////////////////////////////////////
 void SDcardInit()
 {
-	fichier.println("//--------- OctoGeeK - testSD V4 ---------//");// Entête.
-	fichier.println("--------------------------------------------");// Séparateur entête.
+	// fichier.println("//--------- OctoGeeK - testSD V5 ---------//");// Entête.
 	fichier.println("Date - heure ; ana1; ana2; ana3");// Format du tableau.
-	fichier.println("--------------------------------------------");// Séparateur entête.
 }
-
-
-
-
-
-
 //////////////////////////////////////////////////////////////////////
 // **************************************************************** //
 // *******************  Progamme Lecture ANA ********************** //
@@ -117,6 +106,7 @@ String readAna()
 //////////////////////////////////////////////////////////////////////
 char * readRTC()
 {
+	char LaDate         [22];                 // Variable regroupant la date et l'heure.
 	DateTime now  = RTC.now();                  // Retourne l'horodatage du RTC.
 	int secondes    = now.second();                 // Variable des secondes.
 	int minutes   = now.minute();                 // Variable des minutes.
